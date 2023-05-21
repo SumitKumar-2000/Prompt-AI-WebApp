@@ -49,7 +49,7 @@ const Nav = () => {
 
                     <button 
                         type="button"
-                        // onClick={signOut}
+                        onClick={()=>signOut()}
                         className="outline_btn"
                     >
                         Sign Out

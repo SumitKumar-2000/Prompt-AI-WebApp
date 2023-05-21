@@ -4,7 +4,7 @@ import GoogleProvider from "next-auth/providers/google"
 import { connectToDB } from "@utils/database";
 import User from "@models/user";
 
-const handler = NextAuth({
+const handler = NextAuth({  
 
     providers: [
         GoogleProvider({
@@ -12,15 +12,15 @@ const handler = NextAuth({
             clientSecret : process.env.GOOGLE_CLIENT_SECRET
         })
     ],
-    
+
     callbacks: {
-        async session({session}){
-            const sessionUser = await User.findOne({
-                email: session.user.email
-            })
-    
-            session.user.id = sessionUser._id.toString();
+        async session({ session, user }) {
+            if (user) {
+              session.user.id = user._id.toString();
+            }
+            return session;
         }, 
+    
         async signIn({profile}){
     
             try {
@@ -42,9 +42,8 @@ const handler = NextAuth({
             } catch (error) {
                 console.log("User signIn error: ",error);
             }
-        }
-    }
-    
+        }   
+    },
 })
 
 
