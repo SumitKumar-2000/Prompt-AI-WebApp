@@ -14,10 +14,9 @@ const handler = NextAuth({
     ],
 
     callbacks: {
-        async session({ session, user }) {
-            if (user) {
-              session.user.id = user._id.toString();
-            }
+        async session({ session }) {
+            const sessionUser = await User.findOne({email : session.user.email})
+            session.user.id = sessionUser._id.toString();
             return session;
         }, 
     
