@@ -34,7 +34,6 @@ const EditPrompt = () => {
     setSubmitting(true)
 
     try{
-      console.log("update prompt test: ",post);
       const response = await fetch(`api/prompt/${promptId}`,{
         method: 'PATCH',
         body: JSON.stringify({
@@ -47,7 +46,7 @@ const EditPrompt = () => {
         router.push("/")
       }
     } catch(err){
-      console.log("Post submit error: ",err);
+      console.log("Post update error: ",err);
     } finally{
       setSubmitting(false)
     }
