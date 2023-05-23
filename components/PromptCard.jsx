@@ -4,10 +4,13 @@ import { useState } from "react"
 import Image from "next/image"
 import { useSession } from "next-auth/react"
 import { usePathname, useRouter } from "next/navigation"
-import { MdCheckCircle, MdContentCopy } from "react-icons/md"
+import { MdCheckCircle, MdContentCopy, MdDelete, MdEditNote } from "react-icons/md"
 
-const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
+const PromptCard = ({post, handleTagClick}) => {
 
+  const pathName = usePathname()
+  const router = useRouter();
+  const {data:session} = useSession();
   const [copy, setCopy] = useState(false)
 
   const handleCopy = () => {
@@ -38,11 +41,11 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
         >
           {copy ? (
             <MdCheckCircle
-              className="h-3 w-3 md:h-4 md:w-4 text-green-600"
+              className="h-3 w-3 md:h-4 md:w-4 text-green-600 cursor-pointer"
             />
             ) : (
             <MdContentCopy
-              className="h-3 w-3 md:h-4 md:w-4 text-yellow-600"
+              className="h-3 w-3 md:h-4 md:w-4 text-yellow-600 cursor-pointer"
             />
           )}            
         </div>
@@ -53,11 +56,24 @@ const PromptCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
       </div>   
 
       <div 
-        onClick={()=>handleTagClick(post.tag)}
+        // onClick={()=>handleTagClick(post.tag)}
         className="text-sm blue_gradient cursor-pointer"
       >
         {post.tag}
       </div>
+
+      {session?.user.id === post.creator._id && pathName === "/profile" ? <div className="w-full flex-end">
+        <div className="edit_delete_container">  
+          <MdEditNote
+            className="text-green-400 cursor-pointer h-3 w-3 md:h-4 md:w-4"
+            onClick={()=>router.push(`/update-prompt?id=${post._id}`)}
+          />
+          <div className="w-[2px] h-[60%] bg-gray-200"/>
+          <MdDelete
+            className="text-red-400 cursor-pointer h-3 w-3 md:h-4 md:w-4"
+          />
+        </div>
+      </div> : null}        
               
     </div>
   )
