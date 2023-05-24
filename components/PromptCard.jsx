@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useSession } from "next-auth/react"
 import { redirect, usePathname, useRouter } from "next/navigation"
 import { MdCheckCircle, MdContentCopy, MdDelete, MdEditNote } from "react-icons/md"
+import Link from "next/link"
 
 const PromptCard = ({post, handleTagClick, handleDeletePost}) => {
 
@@ -22,7 +23,7 @@ const PromptCard = ({post, handleTagClick, handleDeletePost}) => {
   return (
     <div className="prompt_card">
       <div className="flex justify-between gap-5">
-        <div className="flex-1 flex-start items-center gap-3 cursor-pointer">  
+        <Link href={`/profile/user?id=${post.creator._id}`} className="flex-1 flex-start items-center gap-3 cursor-pointer">  
           <Image
             src={post.creator.image}
             alt="user_image"
@@ -34,7 +35,7 @@ const PromptCard = ({post, handleTagClick, handleDeletePost}) => {
             <p className="font-semibold text-sm text-gray-900">{post.creator.username}</p>
             <p className="text-xs md:text-sm text-gray-500">{post.creator.email}</p>
           </div>
-        </div>
+        </Link>
         <div 
           onClick={handleCopy}
           className="copy_btn"

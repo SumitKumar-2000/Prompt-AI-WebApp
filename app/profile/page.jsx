@@ -5,17 +5,16 @@ import { useSession } from 'next-auth/react'
 import Profile from '@components/Profile'
 import { redirect } from 'next/navigation'
 
-
 const UserProfile = () => {
  
   const [posts, setPosts] = useState([])
   const {data: session} = useSession({
     required: true,
     onUnauthenticated() {
-      redirect("/")
-    }
+      redirect("/");
+    },
   })
-
+  
   useEffect(() => {
     if(session?.user.id){
         (async () => {
@@ -24,7 +23,7 @@ const UserProfile = () => {
           setPosts(data)
         })()  
     }
-  },[])  
+  },[session])  
 
   const handleDeletePost = async (post) => {
     const hasConfirmed = confirm("Are you sure, you want to delete this post?")
