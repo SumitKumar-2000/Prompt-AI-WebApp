@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react"
 import { usePathname, useRouter } from "next/navigation"
 import { MdCheckCircle, MdContentCopy, MdDelete, MdEditNote } from "react-icons/md"
 
-const PromptCard = ({post, handleTagClick}) => {
+const PromptCard = ({post, handleTagClick, handleDeletePost}) => {
 
   const pathName = usePathname()
   const router = useRouter();
@@ -71,6 +71,7 @@ const PromptCard = ({post, handleTagClick}) => {
           <div className="w-[2px] h-[60%] bg-gray-200"/>
           <MdDelete
             className="text-red-400 cursor-pointer h-3 w-3 md:h-4 md:w-4"
+            onClick={()=>handleDeletePost(post)}
           />
         </div>
       </div> : null}        

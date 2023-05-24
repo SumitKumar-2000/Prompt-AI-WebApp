@@ -31,7 +31,6 @@ const Feed = () => {
       const data = await response.json();
       setPosts(data)
     })()
-
   },[])
 
   return (

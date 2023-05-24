@@ -9,8 +9,8 @@ const UserProfile = () => {
  
   const [posts, setPosts] = useState([])
   const {data: session} = useSession()
-  useEffect(() => {
 
+  useEffect(() => {
     if(session?.user.id){
         (async () => {
           const response = await fetch(`api/users/${session?.user.id}/posts`);
@@ -18,8 +18,25 @@ const UserProfile = () => {
           setPosts(data)
         })()  
     }
-
   },[])  
+
+  const handleDeletePost = async (post) => {
+    const hasConfirmed = confirm("Are you sure, you want to delete this post?")
+    if(hasConfirmed){
+      try {
+        const filteredPosts = posts.filter(p => p._id !== post._id)
+        setPosts(filteredPosts)
+        
+        await fetch(`/api/prompt/${post._id.toString()}`,{
+          method: 'DELETE'
+        });
+
+
+      } catch (error) {
+        console.log("Delete post error: ",error);
+      }
+    }
+  }
     
   return (
     <div className='w-full'>
@@ -27,6 +44,7 @@ const UserProfile = () => {
         name="My"
         desc="Welcome to your profile page."
         data={posts}
+        handleDeletePost={handleDeletePost}
       />
     </div>
   )

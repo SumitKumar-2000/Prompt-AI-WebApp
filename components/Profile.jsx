@@ -1,6 +1,6 @@
 import PromptCard from "./PromptCard"
 
-const Profile = ({name, desc, data}) => {
+const Profile = ({name, desc, data, handleDeletePost}) => {
   return (
     <section className='w-full max-w-full flex flex-col flex-start'>
       <h1 className="head_text">
@@ -14,6 +14,7 @@ const Profile = ({name, desc, data}) => {
             <PromptCard
               key={post._id}  
               post={post}
+              handleDeletePost={handleDeletePost}
             />
           )
         )
