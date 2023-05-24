@@ -78,11 +78,11 @@
 }
 
 .black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm flex items-center justify-center;
+  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all duration-500 hover:bg-white hover:text-black hover:shadow-lg text-center text-sm flex items-center justify-center;
 }
 
 .outline_btn {
-  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm  flex items-center justify-center;
+  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all duration-500 hover:bg-black hover:text-white hover:shadow-lg text-center text-sm flex items-center justify-center;
 }
 
 .head_text {
@@ -94,7 +94,7 @@
 }
 
 .orange_gradient {
-  @apply bg-gradient-to-r from-orange-600 to-yellow-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-[#0284c7e6] to-[#20c7c7] bg-clip-text text-transparent;
 }
 
 .green_gradient {
@@ -106,7 +106,7 @@
 }
 
 .desc {
-  @apply mt-3 md:mt-5 text-lg text-[#666666] sm:text-xl max-w-2xl;
+  @apply mt-2 md:mt-4 text-sm md:text-xl text-gray-400 max-w-lg;
 }
 
 .search_input {
@@ -131,7 +131,7 @@
 
 /* Feed Component */
 .feed {
-  @apply w-full mt-16
+  @apply w-full mt-8 md:mt-16
 }
 
 /* Form Component */

@@ -4,8 +4,8 @@ import Provider from '@components/Provider'
 import '@styles/globals.css'
 
 export const metadata = {
-    title : "Prompt Ai",
-    description: "Discover and Share Ai Prompts",
+    title : "ImagiGen",
+    description: "Imagin, Crate & Share limitless creative prompts.",
 }
 
 const RootLayout = ({children}) => {

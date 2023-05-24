@@ -25,13 +25,13 @@ const Nav = () => {
   },[])
   
   return (
-    <nav className='flex-between w-full md:mb-16 py-3'>
+    <nav className='flex-between w-full md:mb-4 py-3'>
       <Link href="/" className="flex-between">
         <MdFiberSmartRecord
-            className="text-orange-600 h-[30px] md:h-[40px] w-[30px] md:w-[40px]"
+            className="text-[#0ea5e9] h-[30px] md:h-[40px] w-[30px] md:w-[40px]"
         />
         <div className="logo_text">
-            Prompt AI
+            ImagiGen
         </div>
       </Link>
 

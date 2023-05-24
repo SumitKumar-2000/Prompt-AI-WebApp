@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { useSession } from "next-auth/react"
-import { usePathname, useRouter } from "next/navigation"
+import { redirect, usePathname, useRouter } from "next/navigation"
 import { MdCheckCircle, MdContentCopy, MdDelete, MdEditNote } from "react-icons/md"
 
 const PromptCard = ({post, handleTagClick, handleDeletePost}) => {
@@ -45,7 +45,7 @@ const PromptCard = ({post, handleTagClick, handleDeletePost}) => {
             />
             ) : (
             <MdContentCopy
-              className="h-3 w-3 md:h-4 md:w-4 text-yellow-600 cursor-pointer"
+              className="h-3 w-3 md:h-4 md:w-4 text-gray-500 cursor-pointer"
             />
           )}            
         </div>

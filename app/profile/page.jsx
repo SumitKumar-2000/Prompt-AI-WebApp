@@ -3,12 +3,18 @@
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import Profile from '@components/Profile'
+import { redirect } from 'next/navigation'
 
 
 const UserProfile = () => {
  
   const [posts, setPosts] = useState([])
-  const {data: session} = useSession()
+  const {data: session} = useSession({
+    required: true,
+    onUnauthenticated() {
+      redirect("/")
+    }
+  })
 
   useEffect(() => {
     if(session?.user.id){
@@ -41,8 +47,8 @@ const UserProfile = () => {
   return (
     <div className='w-full'>
       <Profile
-        name="My"
-        desc="Welcome to your profile page."
+        name="Your"
+        desc="Welcome to your personalize profile page."
         data={posts}
         handleDeletePost={handleDeletePost}
       />
