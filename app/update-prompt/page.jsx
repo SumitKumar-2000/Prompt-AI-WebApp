@@ -38,7 +38,7 @@ const EditPrompt = () => {
         method: 'PATCH',
         body: JSON.stringify({
           prompt: post.prompt,
-          tag: post.tag,
+          tag: post.tag.charAt(0) === "#" ? post.tag.toString().substring(1,) : post.tag.toString(),
         })
       })  
   

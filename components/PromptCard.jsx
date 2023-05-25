@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { MdCheckCircle, MdContentCopy, MdDelete, MdEditNote } from "react-icons/md"
 import Link from "next/link"
 
-const PromptCard = ({post, handleTagClick, handleDeletePost}) => {
+const PromptCard = ({post, handleDeletePost}) => {
 
   const pathName = usePathname()
   const router = useRouter();
@@ -56,12 +56,12 @@ const PromptCard = ({post, handleTagClick, handleDeletePost}) => {
         {post.prompt}
       </div>   
 
-      <div 
-        // onClick={()=>handleTagClick(post.tag)}
+      <Link
+        href={`/tag/${post.tag.toString()}`} 
         className="text-sm blue_gradient cursor-pointer"
       >
-        {post.tag}
-      </div>
+        #{post.tag}
+      </Link>
 
       {session?.user.id === post.creator._id && pathName === "/profile" ? <div className="w-full flex-end">
         <div className="edit_delete_container">  
