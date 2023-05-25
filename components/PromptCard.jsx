@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { useSession } from "next-auth/react"
-import { redirect, usePathname, useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { MdCheckCircle, MdContentCopy, MdDelete, MdEditNote } from "react-icons/md"
 import Link from "next/link"
 
@@ -13,7 +13,7 @@ const PromptCard = ({post, handleTagClick, handleDeletePost}) => {
   const router = useRouter();
   const {data:session} = useSession();
   const [copy, setCopy] = useState(false)
-
+  
   const handleCopy = () => {
     setCopy(post.prompt)
     navigator.clipboard.writeText(post.prompt)
@@ -23,7 +23,7 @@ const PromptCard = ({post, handleTagClick, handleDeletePost}) => {
   return (
     <div className="prompt_card">
       <div className="flex justify-between gap-5">
-        <Link href={`/profile/user?id=${post.creator._id}`} className="flex-1 flex-start items-center gap-3 cursor-pointer">  
+        <Link href={session?.user.id === post.creator._id ? `/profile` : `/profile/${post.creator._id}?name=${post.creator.username}`} className="flex-1 flex-start items-center gap-3 cursor-pointer">  
           <Image
             src={post.creator.image}
             alt="user_image"

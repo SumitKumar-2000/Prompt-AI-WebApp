@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { redirect, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react";
 
-const UsersProfile = () => {
+const UsersProfile = ({params}) => {
 
   const [posts, setPosts] = useState([])  
   const {data:session} = useSession({
@@ -15,23 +15,23 @@ const UsersProfile = () => {
     }
   })  
   const searchParams = useSearchParams();
-  const userId = searchParams.get('id')  
+  const userName = searchParams.get('name')  
 
   useEffect(()=>{
-    if(userId){
+    if(params?.id){
         (async ()=>{
-            const response = await fetch(`http://localhost:3000/api/users/${userId}/posts`);
+            const response = await fetch(`http://localhost:3000/api/users/${params?.id}/posts`);
             const data = await response.json()
             setPosts(data)
         })()
     }
-  },[userId])
+  },[params.id])
     
   return (
     <div className="w-full">
       <Profile
-        name={`${posts.length !== 0 && posts[0].creator.username}`}
-        desc={`Welcome to ${posts.length !== 0 && posts[0].creator.username} profile page`}
+        name={userName}
+        desc={`Welcome to ${userName} profile page`}
         data={posts}
       />
     </div>
