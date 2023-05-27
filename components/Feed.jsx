@@ -47,7 +47,6 @@ const Feed = () => {
 
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
-    console.log("search timeout: ",searchTimeout);
     setSearchQuery(e.target.value);
 
     // debounce method
