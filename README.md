@@ -1,25 +1,19 @@
-# Dashboard
-- The Utility allows you to view your data in well optimized way.
-- Grid View of Dashboard allow user to filter data based on custom filter input eg "contains, equals, greater than, less than etc".
-- Chart View allows user to view data in chart format, user would be able to view data with in the selected date range.
+# ImagiGen
+- Collaborative prompt sharing platform connecting technology enthusiasts, sports lovers, and individuals from various backgrounds facilitating the exploration and creation of daily prompts. 
+- Implemented User account functionality, enabling users to create, modify, and delete their own prompts.
+- Integrated search capabilities that allow users to easily find prompts based on tags, prompt sentence, and specific user.
 
 ## Technology Used
       The Web Application is created using following technologies and Dependencies.
-       |
-       |_ Front-End 
-       |          |_ React.Js
-       |          |_ Zustand (state management) 
-       |          |_ React Routers
-       |          |_ Javascript
-       |          |_ Styled Components
-       |          |_ CSS 
-       |          |_ HTML
-       |
-       |_ Major Dependencies
-                     |_ Ag-Grid-React     
-                     |_ Apex Charts
-                     |_ Chart.Js
+       | 
+       |_ Next.Js 13
+       |_ Next Auth 
+       |_ Rest API
+       |_ Javascript
+       |_ Tailwind CSS
+       |_ HTML 
 
+## HEAD
 
 ## Live Demo
- - https://filterdashboard.netlify.app/
+ https://imagi-gen-web-app.vercel.app/
