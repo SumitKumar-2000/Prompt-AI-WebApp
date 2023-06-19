@@ -13,7 +13,10 @@
        |_ Tailwind CSS
        |_ HTML 
 
-## HEAD
+## OVERVIEW
+
+![image](https://github.com/SumitKumar-2000/Prompt-Ai-WebApp/assets/80626529/6ec2a794-8753-4f68-81dd-e5fd9e31c49b)
+
 
 ## Live Demo
  https://imagi-gen-web-app.vercel.app/
